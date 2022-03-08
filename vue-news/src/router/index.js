@@ -12,15 +12,15 @@ export const router = new VueRouter({
             // path: url 주소
             path: '/news',
             // components: url 주소로 갔을 때, 표시될 컴포넌트
-            components: NewsView,
+            component: NewsView,
         },
         {
             path: '/ask',
-            components: AskView,
+            component: AskView,
         },
         {
-            path: 'jobs',
-            components: JobsView,
-        },
+            path: '/jobs',
+            component: JobsView,
+        }
     ]
 });
