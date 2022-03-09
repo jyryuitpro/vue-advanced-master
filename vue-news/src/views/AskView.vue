@@ -1,31 +1,56 @@
 <template>
   <div>
-    <div v-for="item in ask">{{ item.title }}</div>
+<!--    <div v-for="item in ask">{{ item.title }}</div>-->
+<!--    <div v-for="item in this.$store.state.ask">{{ item.title }}</div>-->
+<!--    <div v-for="item in ask">{{ item.title }}</div>-->
+<!--    <div v-for="item in fetchedAsk">{{ item.title }}</div>-->
+<!--    <div v-for="item in askItems">{{ item.title }}</div>-->
+    <div v-for="item in fetchedAsk">{{ item.title }}</div>
   </div>
 </template>
 
 <script>
-import { fetchAskList } from '../api/index.js';
+// import { fetchAskList } from '../api/index.js';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: "AskView",
-  data() {
-    return {
-      ask: [],
-    }
+  // data() {
+  //   return {
+  //     ask: [],
+  //   }
+  // },
+  computed: {
+    ...mapGetters([
+      'fetchedAsk'
+    ]),
+    // ...mapGetters({
+    //   askItems: 'fetchedAsk'
+    // }),
+
+    // #2
+    // ...mapState({
+    //   fetchedAsk: state => state.ask
+    // }),
+
+    // #1
+    // ask() {
+    //   return this.$store.state.ask;
+    // }
   },
   // ES6 속성에 함수가 있는 경우, : function를 줄일 수 있습니다.
   // created: function() {
   created() {
-    var vm = this;
-    fetchAskList()
-        .then(function (response) {
-          console.log(response);
-          vm.ask = response.data;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+    this.$store.dispatch('FETCH_ASK');
+    // var vm = this;
+    // fetchAskList()
+    //     .then(function (response) {
+    //       console.log(response);
+    //       vm.ask = response.data;
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error);
+    //     });
   }
 }
 </script>

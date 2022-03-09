@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { fetchJobsList } from '../api/index.js';
+// import { fetchJobsList } from '../api/index.js';
 
 export default {
   name: "JobsView",
