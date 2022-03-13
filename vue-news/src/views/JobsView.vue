@@ -2,11 +2,9 @@
   <div>
     <ul class="news-list">
       <li v-for="job in this.$store.state.jobs" class="post">
-        <!-- 포인트 영역 -->
         <div class="points">
           {{ job.points || 0}}
         </div>
-        <!-- 기타 정보 영역 -->
         <div>
           <p class="news-title">
             <a :href="job.url">{{ job.title }}</a>

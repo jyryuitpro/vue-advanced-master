@@ -27,7 +27,21 @@
 export default {
   name: "ListItem",
   created() {
-    this.$store.dispatch('FETCH_NEWS');
+    // this.$store.dispatch('FETCH_NEWS');
+    console.log(this.$route);
+    const name = this.$route.name;
+    if (name === 'news') {
+      this.$store.dispatch('FETCH_NEWS');
+    } else if (name === 'ask') {
+      this.$store.dispatch('FETCH_ASK');
+    } else if (name === 'jobs') {
+      this.$store.dispatch('FETCH_JOBS');
+      // actionName = 'FETCH_JOBS';
+    }
+    // this.$store.dispatch(actionName);
+  },
+  computed: {
+
   },
 }
 </script>
